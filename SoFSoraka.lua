@@ -42,12 +42,6 @@ function Soraka:__init()
 end
 
 function Soraka:Tick()
-	if menu.autow.enabled:Value() and IsReady(_W) and GetPercentHP(myHero) >= menu.autow.myhp:Value() then
-		self:AutoW()
-	end
-	if menu.autor.enabled:Value() and IsReady(_R) then
-		self:AutoR()
-	end
 	if not IsDead(myHero) then
 		local target = GetCurrentTarget()
 		if IOW:Mode() == "Combo" then
@@ -63,6 +57,12 @@ function Soraka:Tick()
 					CastSkillShot(_E, predict.castPos)
 				end
 			end
+		end
+		if menu.autow.enabled:Value() and IsReady(_W) and GetPercentHP(myHero) >= menu.autow.myhp:Value() then
+			self:AutoW()
+		end
+		if menu.autor.enabled:Value() and IsReady(_R) then
+			self:AutoR()
 		end
 	end
 end
